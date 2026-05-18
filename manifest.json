@@ -81,6 +81,42 @@
   },
   "stacking": {
     "priority": 70,
-    "conflict_rule": "user priority, then safety urgency, then lower credit cost; visible handoff only"
+    "conflict_rule": "user priority, then safety urgency, then lower credit cost; visible handoff only",
+    "tags": [
+      "revenue",
+      "launch",
+      "funnel"
+    ],
+    "mutex_resources": [
+      "payments",
+      "external_writes"
+    ],
+    "handoff": "Revenue Operator yields when another Behavior has safer or higher-priority ownership, then records the handoff in the activity log."
+  },
+  "acceptance_tests": {
+    "outcome_artifact": "ranked revenue task list with draft copy",
+    "must_log": [
+      "trigger",
+      "reason",
+      "tool",
+      "credit_cost",
+      "permission_mode",
+      "result",
+      "blocked_actions"
+    ],
+    "must_block": [
+      "external writes without approval",
+      "payments without approval",
+      "trading without approval",
+      "destructive actions without approval"
+    ],
+    "first_24h": "suggestion_only"
+  },
+  "marketplace_loop": {
+    "preview": "free pre-install sample with intensity and permission copy",
+    "install": "signed manifest sync plus local enablement config",
+    "observe": "activity log records reason/cost/result/blocks",
+    "refine": "paid private generation or hosted pack compile when needed",
+    "uninstall": "remove local config and optionally revoke API key"
   }
 }
