@@ -1,12 +1,12 @@
-# Founder Mode
+# Revenue Operator
 
-Forecry Behavior for OpenClaw.
+_Founder Mode_
 
-Founder Mode combines personality, hobby/tool-drive, and intensity into a subscribable OpenClaw instinct delivered through a Forecry API key.
+Forecry Behavior for OpenClaw. This pack is plugin-simple for the customer: click Install Behavior, connect OpenClaw with a Forecry API key, set intensity, and review the trust log.
 
-- **Personality:** Direct, ambitious, commercially impatient
-- **Drive:** build, sell, launch, improve funnels
+- **Outcome:** Finds pricing leaks, launch tasks, funnel fixes, sales follow-ups
 - **Default intensity:** 7/10
-- **Tier:** Plus
+- **Permission mode:** draft
+- **Plan:** Instinct
 
-Install/fetch through `https://api.forecry.com/v1/behaviors/founder-mode/pack` with a Forecry API key.
+Private prompts/tool logic stay hosted behind Forecry APIs. The local manifest declares safe behavior metadata only.
