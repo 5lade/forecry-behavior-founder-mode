@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 const m = JSON.parse(fs.readFileSync(new URL('../manifest.json', import.meta.url), 'utf8'));
-const required = ['schema','slug','name','version','kind','personality','drive','intensity','permissions','safety','pricing','subtitle','outcome','buyer_promise','permission_mode_default','plugin','preview','stacking'];
+const required = ['schema','slug','name','version','kind','personality','drive','intensity','permissions','safety','pricing','subtitle','outcome','buyer_promise','permission_mode_default','plugin','preview','stacking','landing_snippet','done_conditions'];
 const logFields = ['behavior_slug','trigger','reason','tool','credit_cost','permission_mode','result','blocked_actions'];
 const errors = [];
 for (const k of required) if (!(k in m)) errors.push(`missing ${k}`);
@@ -16,5 +16,9 @@ if (!Array.isArray(m.stacking?.mutex_resources)) errors.push('missing mutex reso
 if (!m.stacking?.handoff) errors.push('missing handoff');
 if (!m.acceptance_tests?.outcome_artifact || !Array.isArray(m.acceptance_tests?.must_block)) errors.push('missing acceptance tests metadata');
 if (!m.marketplace_loop?.install || !m.marketplace_loop?.refine) errors.push('missing marketplace loop');
+for (const k of ['personality','drive','hosted_tools','composed_product']) {
+  if (!m.done_conditions?.[k] || m.done_conditions[k].length < 40) errors.push(`missing measurable done condition ${k}`);
+}
+if (!m.landing_snippet || m.landing_snippet.length < 60) errors.push('missing landing snippet');
 if (errors.length) { console.error(errors.join('\n')); process.exit(1); }
 console.log(`${m.slug} manifest validated`);

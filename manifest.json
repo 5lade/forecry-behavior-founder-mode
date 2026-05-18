@@ -118,5 +118,12 @@
     "observe": "activity log records reason/cost/result/blocks",
     "refine": "paid private generation or hosted pack compile when needed",
     "uninstall": "remove local config and optionally revoke API key"
+  },
+  "landing_snippet": "Find pricing leaks, launch gaps, funnel fixes, and sales follow-ups \u2014 ranked by likely revenue impact.",
+  "done_conditions": {
+    "personality": "Founder Mode tone is visible but subordinated to concrete, permission-safe customer value.",
+    "drive": "Produces measurable artifact: ranked revenue task list with draft copy from pricing change, stale launch checklist, or unanswered sales follow-up.",
+    "hosted_tools": "Forecry API-keyed hosted checks log tool, cost (2 credits), permission mode, result, and blocks.",
+    "composed_product": "Signed manifest install, preview intensities 3/6/10, stacking handoff, quiet hours, spend caps, and approval gates are documented and testable."
   }
 }
