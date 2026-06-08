@@ -1,14 +1,14 @@
 {
   "schema": "forecry.openclaw.behavior.v1",
   "slug": "founder-mode",
-  "name": "Revenue Operator",
+  "name": "Revenue Leak Operator",
   "version": "2026.05.18.2",
   "kind": "composed-behavior",
   "personality": {
     "tone": "Direct, ambitious, commercially impatient",
     "style_rules": [
       "Stay useful before theatrical",
-      "Keep user trust higher than persona performance",
+      "Keep user trust higher than persona theatrics",
       "Explain proactive actions when asked"
     ]
   },
@@ -22,7 +22,7 @@
     "min": 1,
     "max": 10,
     "scale": {
-      "1": "flavour only",
+      "1": "signal visibility only",
       "5": "roughly daily useful initiative",
       "10": "tries at least hourly when safe and allowed"
     }
@@ -45,16 +45,16 @@
     ]
   },
   "pricing": {
-    "tier": "instinct",
+    "tier": "command",
     "install_credits": 0,
     "refine_credits": 25,
     "hosted_check_credits": 2,
     "preview_credits": 0
   },
-  "subtitle": "Founder Mode",
-  "outcome": "Finds pricing leaks, launch tasks, funnel fixes, sales follow-ups",
-  "buyer_promise": "Finds pricing leaks, launch tasks, funnel fixes, sales follow-ups",
-  "priority": 70,
+  "subtitle": "Revenue Leak Operator system for revenue-leak decisioning",
+  "outcome": "Scans pricing, checkout, onboarding, funnel, and follow-up signals for ranked revenue leaks",
+  "buyer_promise": "Find revenue leaks across pricing, checkout, onboarding, and follow-ups — ranked by impact, confidence, urgency, and effort.",
+  "priority": 65,
   "permission_mode_default": "draft",
   "plugin": {
     "install_feel": "plugin",
@@ -72,15 +72,24 @@
     ]
   },
   "preview": {
-    "sample": "Revenue Operator triggered because it found a useful opportunity: finds pricing leaks, launch tasks, funnel fixes, sales follow-ups.",
+    "sample": "Revenue Leak Operator watches funnel/pricing signals, scores likely revenue impact, and drafts approval-gated fixes before any external write.",
     "intensity_examples": {
-      "3": "occasional suggestions",
-      "6": "daily/active support",
-      "10": "hourly attempts when safe and budgeted"
-    }
+      "3": "Surfaces one ranked leak with evidence, estimated impact, and an approval-safe next action.",
+      "6": "Ranks at least three leaks, drafts one experiment/copy recommendation, and logs cost plus confidence.",
+      "10": "Runs bounded checks on approved revenue surfaces while respecting quiet hours, spend caps, and approval gates."
+    },
+    "five_layer_summary": {
+      "signal_input_layer": "Funnel events, pricing/checkout diffs, CRM or sales follow-up state, onboarding drop-offs, analytics anomalies, trial conversion signals, and landing-page claims.",
+      "scoring_ranking_layer": "Expected revenue impact, confidence, urgency, effort, customer risk, reversibility, and experiment value.",
+      "tool_action_layer": "Pricing/checkout scanner, synthetic checkout smoke, analytics query, CRM/task draft, landing copy diff, and experiment brief generator.",
+      "policy_permission_layer": "Draft-only for outbound comms, pricing changes, discounts, customer messages, and production config unless explicitly approved.",
+      "memory_calibration_layer": "Past experiments, accepted/declined recommendations, conversion impact, segment calibration, and known business constraints."
+    },
+    "scale_gate_verdict": "Conditional keep: survives only as a Revenue Leak Operator with real revenue-ops scanning, scoring, and approval-gated action; generic founder motivation is too copyable.",
+    "kill_condition": "If integrations are too broad for MVP, merge pricing/launch-copy pieces into Launch Narrative Engine and kill the standalone behavior."
   },
   "stacking": {
-    "priority": 70,
+    "priority": 65,
     "conflict_rule": "user priority, then safety urgency, then lower credit cost; visible handoff only",
     "tags": [
       "revenue",
@@ -91,10 +100,10 @@
       "payments",
       "external_writes"
     ],
-    "handoff": "Revenue Operator yields when another Behavior has safer or higher-priority ownership, then records the handoff in the activity log."
+    "handoff": "Revenue Leak Operator yields when another Behavior has safer or higher-priority ownership, then records the handoff in the activity log."
   },
   "acceptance_tests": {
-    "outcome_artifact": "ranked revenue task list with draft copy",
+    "outcome_artifact": "ranked revenue leak report with draft experiment/copy recommendations",
     "must_log": [
       "trigger",
       "reason",
@@ -110,20 +119,54 @@
       "trading without approval",
       "destructive actions without approval"
     ],
-    "first_24h": "suggestion_only"
+    "first_24h": "suggestion_only",
+    "requires_layers": [
+      "signal_input_layer",
+      "scoring_ranking_layer",
+      "tool_action_layer",
+      "policy_permission_layer",
+      "memory_calibration_layer"
+    ],
+    "must_validate_layers": {
+      "signal_input_layer": "Funnel events, pricing/checkout diffs, CRM or sales follow-up state, onboarding drop-offs, analytics anomalies, trial conversion signals, and landing-page claims.",
+      "scoring_ranking_layer": "Expected revenue impact, confidence, urgency, effort, customer risk, reversibility, and experiment value.",
+      "tool_action_layer": "Pricing/checkout scanner, synthetic checkout smoke, analytics query, CRM/task draft, landing copy diff, and experiment brief generator.",
+      "policy_permission_layer": "Draft-only for outbound comms, pricing changes, discounts, customer messages, and production config unless explicitly approved.",
+      "memory_calibration_layer": "Past experiments, accepted/declined recommendations, conversion impact, segment calibration, and known business constraints."
+    },
+    "kill_condition": "If integrations are too broad for MVP, merge pricing/launch-copy pieces into Launch Narrative Engine and kill the standalone behavior."
   },
   "marketplace_loop": {
     "preview": "free pre-install sample with intensity and permission copy",
     "install": "signed manifest sync plus local enablement config",
     "observe": "activity log records reason/cost/result/blocks",
-    "refine": "paid private generation or hosted pack compile when needed",
+    "refine": "paid private generation or hosted system compile when needed",
     "uninstall": "remove local config and optionally revoke API key"
   },
-  "landing_snippet": "Find pricing leaks, launch gaps, funnel fixes, and sales follow-ups \u2014 ranked by likely revenue impact.",
+  "landing_snippet": "Find revenue leaks across pricing, checkout, onboarding, and follow-ups — ranked by impact, confidence, urgency, and effort.",
   "done_conditions": {
-    "personality": "Founder Mode tone is visible but subordinated to concrete, permission-safe customer value.",
-    "drive": "Produces measurable artifact: ranked revenue task list with draft copy from pricing change, stale launch checklist, or unanswered sales follow-up.",
+    "personality": "Revenue Leak Operator decision style is visible but subordinated to concrete, permission-safe customer value.",
+    "drive": "Produces measurable artifact: ranked revenue leak report with draft experiment/copy recommendations from the configured five-layer signal, scoring, tool, policy, and memory stack.",
     "hosted_tools": "Forecry API-keyed hosted checks log tool, cost (2 credits), permission mode, result, and blocks.",
-    "composed_product": "Signed manifest install, preview intensities 3/6/10, stacking handoff, quiet hours, spend caps, and approval gates are documented and testable."
-  }
+    "composed_product": "Signed manifest install, preview intensities 3/6/10, required five-layer metadata, scale-gate verdict, kill condition, stacking handoff, quiet hours, spend caps, and approval gates are documented and testable.",
+    "scale_or_kill": "Conditional keep: survives only as a Revenue Leak Operator with real revenue-ops scanning, scoring, and approval-gated action; generic founder motivation is too copyable. Kill condition: If integrations are too broad for MVP, merge pricing/launch-copy pieces into Launch Narrative Engine and kill the standalone behavior."
+  },
+  "scale_gate_verdict": "Conditional keep: survives only as a Revenue Leak Operator with real revenue-ops scanning, scoring, and approval-gated action; generic founder motivation is too copyable.",
+  "complexity_verdict": "conditional_keep",
+  "kill_condition": "If integrations are too broad for MVP, merge pricing/launch-copy pieces into Launch Narrative Engine and kill the standalone behavior.",
+  "requires_layers": [
+    "signal_input_layer",
+    "scoring_ranking_layer",
+    "tool_action_layer",
+    "policy_permission_layer",
+    "memory_calibration_layer"
+  ],
+  "five_layer_behavior_stack": {
+    "signal_input_layer": "Funnel events, pricing/checkout diffs, CRM or sales follow-up state, onboarding drop-offs, analytics anomalies, trial conversion signals, and landing-page claims.",
+    "scoring_ranking_layer": "Expected revenue impact, confidence, urgency, effort, customer risk, reversibility, and experiment value.",
+    "tool_action_layer": "Pricing/checkout scanner, synthetic checkout smoke, analytics query, CRM/task draft, landing copy diff, and experiment brief generator.",
+    "policy_permission_layer": "Draft-only for outbound comms, pricing changes, discounts, customer messages, and production config unless explicitly approved.",
+    "memory_calibration_layer": "Past experiments, accepted/declined recommendations, conversion impact, segment calibration, and known business constraints."
+  },
+  "positioning": "hosted decision system for agents, not a prompt/persona wrapper"
 }
